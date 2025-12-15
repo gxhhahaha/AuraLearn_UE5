@@ -39,7 +39,7 @@ private:
 	//鼠标光标检测
 	void CursorTrace();
 	//鼠标光标上一帧的检测结果
-	IEnemyInterface* LastActor;
+	TObjectPtr<IEnemyInterface> LastActor;
 	//鼠标光标当前帧的检测结果
-	IEnemyInterface* ThisActor;
+	TObjectPtr<IEnemyInterface> ThisActor;
 };

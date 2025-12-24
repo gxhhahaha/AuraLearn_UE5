@@ -27,6 +27,7 @@ public:
 	//playertick先于tick执行
 	virtual void PlayerTick(float DeltaTime) override;
 	
+	FHitResult GetCursorHit() const {return CursorHit;}
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -37,6 +38,13 @@ private:
 	
 	UPROPERTY(EditAnywhere,Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
+	
+	UPROPERTY(EditAnywhere,Category = "Input")
+	TObjectPtr<UInputAction> ShiftAction;
+	
+	void ShiftPressed() {bShiftPressed = true; }
+	void ShiftReleased() {bShiftPressed = false; }
+	bool bShiftPressed = false;
 	
 	void Move(const FInputActionValue& InputActionValue);
 	

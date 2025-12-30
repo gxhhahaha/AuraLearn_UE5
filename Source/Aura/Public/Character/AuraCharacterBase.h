@@ -66,6 +66,17 @@ protected:
 	
 	virtual void AddCharacterAbilities();
 	
+	/*溶解特效*/
+	void Dissolve();
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartDissolve(UMaterialInstanceDynamic* DynamicInstanceMaterial);
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartWeaponDissolve(UMaterialInstanceDynamic* DynamicInstanceMaterial);
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UMaterialInstance> DissolveMaterialInstance;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UMaterialInstance> WeaponDissolveMaterialInstance;
+	
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Attributes", meta=(AllowPrivateAccess=true))
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;

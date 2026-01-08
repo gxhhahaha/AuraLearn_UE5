@@ -12,6 +12,8 @@
 
 
 class UWidgetComponent;
+class UBehaviorTree;
+class AAuraAIController;
 /**
  * 
  */
@@ -21,6 +23,9 @@ class AURA_API AAuraEnemy : public AAuraCharacterBase, public IEnemyInterface
 	GENERATED_BODY()
 public:
 	AAuraEnemy();
+	
+	virtual void PossessedBy(AController* NewController) override;
+	
 	/* EnemyInterface begin*/
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
@@ -54,16 +59,19 @@ protected:
 	
 	virtual void InitializeDefaultAttributes() const override;
 	
-private:
-	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character Class Defaults",meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character Class Defaults")
 	int32 Level =1;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character Class Defaults",meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character Class Defaults")
 	ECharacterClass CharacterClass = ECharacterClass::Warrior;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UWidgetComponent> HealthBar;
 	
+	UPROPERTY(EditAnywhere, Category= "AI")
+	TObjectPtr<UBehaviorTree> BehaviorTree;
+	
+	UPROPERTY()
+	TObjectPtr<AAuraAIController> AuraAIController;
 
 };

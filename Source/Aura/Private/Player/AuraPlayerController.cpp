@@ -57,7 +57,7 @@ void AAuraPlayerController::CursorTrace()
 	
 	LastActor = ThisActor;
 	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
-	
+	LuckActor = CursorHit.GetActor();
 	/*
 	 * 鼠标光标检测的几种结果
 	 * A. LastActor == null && ThisActor==null

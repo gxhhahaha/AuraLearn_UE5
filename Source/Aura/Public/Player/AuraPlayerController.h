@@ -32,6 +32,11 @@ public:
 	
 	UFUNCTION(Client, Reliable)
 	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter, bool bBlockHit, bool bCriticalHit);
+	
+	AActor* GetLockActor()
+	{
+		return LuckActor;
+	}
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -59,6 +64,8 @@ private:
 	//鼠标光标当前帧的检测结果
 	IEnemyInterface* ThisActor;
 	FHitResult CursorHit;
+	
+	TObjectPtr<AActor> LuckActor = nullptr;
 	
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagReleased(FGameplayTag InputTag);

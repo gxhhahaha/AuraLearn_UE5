@@ -1,4 +1,4 @@
-// Copyright Glory
+ // Copyright Glory
 
 #pragma once
 
